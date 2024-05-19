@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fallout Tabletop RPG Character Console</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <h1 id="game-title">Fallout Tabletop RPG <span>Alpha 0.0.0 | by Kobra Rocks<span></h1>
+
+
+    <nav>
+      <nav-menu>
+        <nav-direction id="left"><img src="icons/chevron_left_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-direction>
+        <nav-edit><img src="icons/edit_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-edit>
+        <nav-main><img src="icons/menu_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-main>
+        <nav-settings><img src="icons/settings_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-settings>
+        <nav-direction id="right"><img src="icons/chevron_right_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-direction>
+      </nav-menu>
+
+      <nav-lists>
+        <nav-list id="file">
+          <nav-item id="upload"><input type="file" accept=".json" ></nav-item>
+          <nav-item id="download">Save</nav-item>
+        </nav-list>
+
+        <nav-list id="character-sheet">
+          <nav-item id="player-profil">Profil</nav-item>
+          <nav-item id="player-skills">Skills</nav-item>
+          <nav-item id="player-combat">Combat</nav-item>
+          <nav-item id="player-weapons">Weapons</nav-item>
+        </nav-list>
+
+      </nav-lists>
+
+    </nav>
+
+    <player-profil>
+
+      <player-name>
+        <label for="name">character Name</label>
+        <input name="name" type="text" value="My Name" disabled />
+      </player-name>
+
+      <player-xp>
+
+        <player-level>
+          <label for="level">Level</label>
+          <input name="level" type="number" min="0" step="1" value="0" disabled />
+        </player-level>
+
+        <xp-earned>
+          <label for="xpEarned">XP Earned</label>
+          <input name="xpEarned" type="number" min="0" value="0" disabled />
+        </xp-earned>
+
+        <xp-to-next-level>
+          <label for="xpToNextLevel">XP to next level</label>
+          <input name="xpToNextLevel" type="number" min="0" value="0" disabled />
+        </xp-to-next-level>
+
+        <player-origin>
+          <label for="origin">Origin</label>
+          <input name="origin" type="text" disabled />
+        </player-origin>
+
+      </player-xp>
+
+      <player-special>
+        <special-attribute>
+          <label for="strength">strength</label>
+          <input name="strength" type="number" min="0" step="1" value="0" disabled />
+        </special-attribute>
+        <special-attribute>
+          <label for="perception">perception</label>
+          <input name="perception" type="number" min="0" step="1" value="0" disabled />
+        </special-attribute>
+        <special-attribute>
+          <label for="endurance">endurance</label>
+          <input name="endurance" type="number" min="0" step="1" value="0" disabled />
+        </special-attribute>
+        <special-attribute>
+          <label for="charisma">charisma</label>
+          <input name="charisma" type="number" min="0" step="1" value="0" disabled />
+        </special-attribute>
+        <special-attribute>
+          <label for="intelligence">intelligence</label>
+          <input name="intelligence" type="number" min="0" step="1" value="0" disabled   />
+        </special-attribute>
+        <special-attribute>
+          <label for="agility">agility</label>
+          <input name="agility" type="number" min="0" step="1" value="0" disabled />
+        </special-attribute>
+        <special-attribute>
+          <label for="luck">luck</label>
+          <input name="luck" type="number" min="0" step="1" value="0" disabled />
+        </special-attribute>
+
+      </player-special>
+
+      <luck-points>
+        <label for="luckPoints">Luck Points</label>
+        <input name="luckPoints" type="number" min="0" max="0" step="1" value="0"disabled />
+      </luck-points>
+
+    </player-profil>
+
+    <player-skills style="display:none;">
+      <h2>Skills</h2>
+      <skill-table>
+      </skill-table>
+    </player-skills>
+
+    <player-combat style="display:none;">
+      Combat
+    </player-combat>
+
+    <player-weapons style="display:none;">
+      Weapons
+    </player-weapons>
+
+    <script type="module" src="app/main.js"></script>
+  </body>
+</html>
