@@ -1,5 +1,6 @@
 
 import { engine }  from "./engine.js";
+import { FormEngine } from "./FormEngine.js";
 
 const navSettings = document.querySelector("nav-list#character-sheet");
 const navFile = document.querySelector("nav-list#file");
@@ -38,6 +39,10 @@ document.getElementById('download').addEventListener('click', () => {
   engine.File.download(); 
 }, false );
 
+// load the default tabletop layout
+const defaultLayout = /* document.querySelector("default-layout").value || */ 'fallout';
+const tabletopLayout = await fetch(`/tabletop/${defaultLayout}.json`).then( response => response.json() );
+FormEngine.render( tabletopLayout.screens );
 
 // Create the skill table
 const skills = [

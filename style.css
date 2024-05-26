@@ -107,6 +107,30 @@ nav-item {
   cursor:pointer;
 }
 
+/********************************************
+* SCREEN SECTIONS
+* ******************************************/
+screen-section {
+  display:flex;
+  flex-direction: column;
+  box-sizing:border-box;
+  padding: 1rem 0;
+}
+
+section-title {
+  margin-bottom:1rem;
+}
+
+section-form {
+  display: flex;
+  flex-direction: column;
+}
+
+section-form > * {
+  margin-bottom:0.2rem;
+}
+
+
 /*******************************************
 * PLAYER PROFIL 
 ********************************************/

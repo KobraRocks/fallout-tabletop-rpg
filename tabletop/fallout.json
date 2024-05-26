@@ -1,0 +1,52 @@
+{
+  "tabletop": "Fallout",
+  "version": "0.0.1",
+  "author": { "name":Kobra Rocks", "url":"https://kobra.rocks"},
+  "url": "https://github.com/KobraRocks/fallout-tabletop-rpg",
+  "screens": [
+    { 
+      "title": "Character",
+      "sections": [
+        {
+          "name": "baseInformation",
+          "title": "Base Information",
+          "inputs": [
+            {
+              "type": "CharacterName",
+              "label": "Character Name",
+              "value": "Add your player name"
+            },
+            {
+              "type": "CharacterOrigin",
+              "label": "Origin",
+              "value": "ORIGIN UNKNOWED"
+            },
+            {
+              "type": "CharacterBiography",
+              "label": "Biography",
+              "value": "Add a Biography"
+            }
+          ]
+        },
+        {
+          "name": "experience",
+          "title": "Experience",
+          "inputs": [
+            {
+              "type": "CharacterLevel",
+              "label": "Level"
+            },
+            {
+              "type": "XPEarned",
+              "label": "XP Earned"
+            },
+            {
+              "type": "XPToNextLevel",
+              "label": "XP to next level"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

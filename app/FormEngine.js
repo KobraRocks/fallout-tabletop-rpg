@@ -43,7 +43,7 @@ class CharacterName extends RPGText {
 }
 customElements.define( "character-name", CharacterName );
 
-class characterOrigin extends RPGText {
+class CharacterOrigin extends RPGText {
   static render ({ label, value = "UNKNOWN" }) {
     return `
       <character-origin>
@@ -61,13 +61,13 @@ class CharacterBiography extends RPGTextArea {
       <character-biography>
         <details>
         <summary>${label}</summary>
-        <text-area row="5">${value}</text-area>
+        <textarea row="5" disabled>${value}</textarea>
         </details>
       </character-biography>
     `;
   }
 }
-customElements.define( "character-biographyr", CharacterBiography );
+customElements.define( "character-biography", CharacterBiography );
 
 class CharacterLevel extends RPGNumber {
   static render ({ 
@@ -80,7 +80,7 @@ class CharacterLevel extends RPGNumber {
     return `
       <character-level>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </character-level>
     `;
   }
@@ -98,7 +98,7 @@ class MaximumHP extends RPGNumber {
     return `
       <maximum-hp>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </maximum-hp>
     `;
   }
@@ -116,7 +116,7 @@ class CurrentHP extends RPGNumber {
     return `
       <current-hp>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </current-hp>
     `;
   }
@@ -134,7 +134,7 @@ class XPEarned extends RPGNumber {
     return `
       <xp-earned>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </xp-earned>
     `;
   }
@@ -152,7 +152,7 @@ class XPToNextLevel extends RPGNumber {
     return `
       <xp-to-next-level>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </xp-to-next-level>
     `;
   }  
@@ -171,7 +171,7 @@ class CharacterAttribute extends RPGNumber {
     return `
       <character-attribute name="${attribute}">
         <label>${label}</label>
-        <input attribute-rank type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input attribute-rank type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </character-attribute>
     `;
   }
@@ -189,7 +189,7 @@ class AttributePointPool extends RPGNumber {
     return `
       <attribute-point-pool>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </attribute-point-pool>
     `;
   }
@@ -210,8 +210,8 @@ class CharacterSkill extends RPGElement {
     return `
       <character-skill name="${skill}" parent-attribute="${parentAttribute}">
         <label>${label} <span class="attribute short">[${attributeShort}]</span></label>
-        <input skill-tag type="checkbox">
-        <input skill-rank type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input skill-tag type="checkbox" disabled>
+        <input skill-rank type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
 
       </character-skill>`;
   }
@@ -228,7 +228,7 @@ class RPGEffect extends RPGTextArea {
     return `
       <details>
         <summary>${label}</summary>
-        <textarea row="5">${description}</textarea>
+        <textarea row="5" disabled>${description}</textarea>
       </details>
     `;  
   }
@@ -264,14 +264,14 @@ class CharacterPerk extends RPGElement {
 
     const effectsDescriptions= '';
 
-    for (let i=0; i < descriptions.length; i++) {
+    for (let i=0; i < effects.length; i++) {
       effectsDescriptions += PerkEffect.render( effects[i] ); 
     }
 
     return `
       <character-perk name="${perk}">
         <label>${label}</label>
-        <input perk-rank type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input perk-rank type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
         <effect-descriptions>
           ${effectsDescriptions}
         </effect-descriptions>
@@ -300,7 +300,7 @@ class CharacterTrait extends RPGTextArea {
     return `
       <rpg-trait name="${trait}">
         <label>${label}</label>
-        <text-area trait-descripion row="5" >${description}</text-area>
+        <text-area trait-descripion row="5" disabled>${description}</text-area>
       </rpg-trait>
     `;
   }
@@ -318,7 +318,7 @@ class DamageDice extends RPGNumber {
   }) {
     return `
       <damage-dice>
-<input type="number" min="${min}" max="${max}" step=${step} value="${value}"><rpg-icon ${icon}>        
+<input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled><rpg-icon ${icon}>       
       </damage-dice>
     `;
   }
@@ -359,7 +359,7 @@ class CombatDefense extends RPGNumber {
     return `
       <combat-defense>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </combat-defense>
     `;
   }
@@ -377,7 +377,7 @@ class CombatInitiative extends RPGNumber {
     return `
       <combat-initiative>
         <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
       </combat-initiative>
     `;
   }
@@ -398,7 +398,7 @@ class DamageResistance extends RPGElement {
     return `
       <damage-resistance name="${damage}">
         <label>${label}</label>
-        <input resistance type="number" min="${min}" max="${max}" step=${step} value="${value}">
+        <input resistance type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
         <input immunity type="text" value="${immunityValue}" hidden>
         <button type="button"hidden>${buttonLabel}</button>
       </damage-resistance>
@@ -456,7 +456,7 @@ class BodyPart extends RPGNumber {
       <body-part name="${part}">
         <body-part-hp>
           <label>${label}</label>
-          <input type="number" min="${min}" max="${max}" step=${step} value="${value}">
+          <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
         </body-part-hp>
         ${resistancesHTML}
       </body-part>
@@ -487,7 +487,7 @@ class RPGQuality extends RPGTextArea {
     return `
       <details>
         <summary>${label}</summary>
-        <textarea row="5">${description}</textarea>
+        <textarea row="5" disabled>${description}</textarea>
       </details>
     `;
   }
@@ -507,7 +507,7 @@ class WeaponQuality extends RPGQuality {
 
 
 /**********************************************
- * BUILD LOGIC
+ * RPGHTML API
  * *******************************************/
 class RPGHTML {
 
@@ -556,57 +556,59 @@ class RPGHTML {
 }
 
 
-class Section extends HTMLElement {
-  constructor() {
-    super();
+class ScreenSection extends HTMLElement {
+  static render ({ name, title = "Section Title", inputs = [] }) {
+    let inputsHTML = '';
 
-    this.innerHTML = `
-      <section-title></section-title>
-      <section-inputs></section-inputs>
-    `;
-  }
-
-  render ({ title = "Section Title", inputs = [] }) {
     for ( const data of inputs ) {
-      this.innerHTML += "";
-      
+      const rpgType = data.type;
+      inputsHTML += RPGHTML[rpgType].render( data );  
     }
-  }
 
-}
-customElements.define("rpg-section", Section);
-
-
-class Sheet extends HTMLElement {
-  constructor () {
-    super();
-
-    this.innerHTML = `
-      <sheet-title></sheet-title>
-      <sheet-sections></sheet-sections>
+    return `
+    <screen-section name="${name}">
+      <section-title>${title}</section-title>
+      <section-form>
+        ${inputsHTML}
+      </section-form>
+    </screen-section>
     `;
   }
 
-  render ({ title = "Sheet Title", sections = [] }) {
+customElements}
+customElements.define("screen-section", ScreenSection);
+
+
+class Screen extends HTMLElement {
+  static render ({ title = "Screen Title", sections = [] }) {
+    let sectionsHTML = '';
+
     for ( const section of sections ) {
-      const sectionElement = new Section();
-      sectionElement.render( section );
-      this.querySelector("sheet-section").appendChild( sectionElement );
+      sectionsHTML += ScreenSection.render( section );
     }
+
+    return `
+      <screen-title>${title}</screen-title>
+      <screen-sections>${sectionsHTML}</screen-sections>
+    `;
+
   }
 }
-customElements.define("rpg-sheet", Sheet);
+customElements.define("rpg-screen", Screen);
 
-
+/**********************************************
+ * RENDER RPG FORM
+ * *******************************************/
 const rpgForm = document.querySelector("rpg-form");
 
-class FormEngine {
-  static render ( sheets = [] ) {  
-    for (const sheet of sheets ) {
-      const sheetElement = new Sheet();
-      sheetElement.render( sheet );
+export class FormEngine {
+  static render ( screens = [] ) {  
+    let screensHTML = '';
 
-      rpgForm.appendChild( sheetElement );
+    for (const screen of screens ) {
+      screensHTML += Screen.render(screen);
     }
+
+    rpgForm.innerHTML = screensHTML;
   }
 }
