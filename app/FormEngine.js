@@ -9,62 +9,94 @@ class RPGElement extends HTMLElement {
  * BASE INPUT CLASS
  * *******************************************/
 class RPGCheckBox extends RPGElement {
+  static render ( tagname, { label, checked }) {
+
+    const labelHTML = label ? `<label>${label}</label>` : '';
+
+    return `
+      <${tagname}>
+        ${labelHTML}
+        <input type="checkbox" ${checked ? 'checked': ''}>
+      </${tagname}>
+    `;
+  }
   get value () { return this.querySelector('input[type="checkbox"]').checked; }
   set value( bool ) { this.querySelector('input[type="checkbox]').checked = bool;}
 }
 
 class RPGNumber extends RPGElement {
+  static render ( tagname, { label, min, max, step, value }) {
+
+    const labelHTML = label ? `<label>${label}</label>` : '';
+
+    return `
+      <${tagname}>
+        ${labelHTML}
+        <input type="number" min="${min}" max="${max}" step="${step}" value="${value}" disabled>
+      </${tagname}>
+    `;
+  }
   get value () { return this.querySelector('input[type="number"]').value; }
   set value ( number ) { this.querySelector('input[type="number"]').value = number; }
 }
 
 class RPGText extends RPGElement {
+  static render ( tagname, { label, value } ) {
+
+    const labelHTML = label ? `<label>${label}</label>` : '';
+
+    return `
+      <${tagname}>
+        ${labelHTML}
+        <input type="text" value="${value}" disabled>
+      </${tagname}>
+    `;
+  } 
   get value () { return this.querySelector('input[type="text"]').value; }
   set value ( text ) { this.querySelector('input[type="text"]').value = text; }
 }
 
 class RPGTextArea extends RPGElement {
+  static render (tagname, { name, label, value }) {
+    let nameAttribute;
+
+    if (name) nameAttribute = `name="${name}"`;
+
+    return `
+      <${tagname} ${name}>
+        <details>
+          <summary>${label}</summary>
+          <textarea row="5" disabled>${value}</textarea>
+        </details>
+      </${tagname}>
+    `;
+  }
   get value () { return this.querySelector('textarea').value; }
   set value ( text ) { this.querySelector('textarea').value = text; }
 }
+
+
 
 /**********************************************
  * RPG CLASS
  * *******************************************/
 class CharacterName extends RPGText {
   static render ({ label, value="My Name" }) {
-    return `
-      <character-name>
-        <label>${label}</label>
-        <input type="text" value="${value}" disabled>
-      </character-name>
-    `;
+    return RPGText.render("character-name", {label, value});
   }
 }
 customElements.define( "character-name", CharacterName );
 
 class CharacterOrigin extends RPGText {
   static render ({ label, value = "UNKNOWN" }) {
-    return `
-      <character-origin>
-        <label>${label}</label>
-        <input type="text" value="${value}" disabled>
-      </character-origin>
-    `;
+    return RPGText.render("character-origin", { label, value }); 
   }
 }
 customElements.define( "character-origin", CharacterOrigin );
 
 class CharacterBiography extends RPGTextArea {
   static render ({ label, value="NO BIO YET"}) {
-    return `
-      <character-biography>
-        <details>
-        <summary>${label}</summary>
-        <textarea row="5" disabled>${value}</textarea>
-        </details>
-      </character-biography>
-    `;
+    return RPGTextArea.render("character-biography", {label, value }); 
   }
 }
 customElements.define( "character-biography", CharacterBiography );
@@ -77,12 +109,7 @@ class CharacterLevel extends RPGNumber {
     step = 1,
     value = 0 
   }) {
-    return `
-      <character-level>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </character-level>
-    `;
+    return RPGNumber.render("character-level", {label, min, max, step, value});
   }
 }
 customElements.define( "character-level", CharacterLevel );
@@ -95,12 +122,7 @@ class MaximumHP extends RPGNumber {
     step = 1,
     value = 0
   }) {
-    return `
-      <maximum-hp>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </maximum-hp>
-    `;
+   return  RPGNumber.render("maximum-hp", {label, min, max, step, value }); 
   }
 }
 customElements.define( "maximum-hp", MaximumHP );
@@ -113,12 +135,7 @@ class CurrentHP extends RPGNumber {
     step = 1,
     value = 0
   }) {
-    return `
-      <current-hp>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </current-hp>
-    `;
+   return  RPGNumber.render("current-hp", {label, min, max, step, value }); 
   }
 }
 customElements.define( "current-hp", CurrentHP );
@@ -131,12 +148,7 @@ class XPEarned extends RPGNumber {
     step = 1,
     value = 0 
   }) {
-    return `
-      <xp-earned>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </xp-earned>
-    `;
+   return  RPGNumber.render("xp-earned", {label, min, max, step, value });
   }
 }
 customElements.define( "xp-earned", XPEarned );
@@ -149,12 +161,7 @@ class XPToNextLevel extends RPGNumber {
     step = 1,
     value = 0 
   }) {
-    return `
-      <xp-to-next-level>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </xp-to-next-level>
-    `;
+   return  RPGNumber.render("xp-to-next-level", {label, min, max, step, value });
   }  
 }
 customElements.define( "xp-to-next-level", XPToNextLevel );
@@ -168,10 +175,11 @@ class CharacterAttribute extends RPGNumber {
     step = 1,
     value = 0
   }) {
+    const rankHTML = RPGNumber.render("attribute-rank", {label, min, max, step, value});
+
     return `
       <character-attribute name="${attribute}">
-        <label>${label}</label>
-        <input attribute-rank type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
+        ${rankHTML}
       </character-attribute>
     `;
   }
@@ -186,12 +194,7 @@ class AttributePointPool extends RPGNumber {
     step = 1,
     value = 0 
   }) {
-    return `
-      <attribute-point-pool>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </attribute-point-pool>
-    `;
+    return RPGNumber.render("attribute-point-pool", {label, min, max, step, value});
   }
 }
 customElements.define( "attribute-point-pool", AttributePointPool );
@@ -223,30 +226,13 @@ class CharacterSkill extends RPGElement {
 }
 customElements.define( "character-skill", CharacterSkill );
 
-class RPGEffect extends RPGTextArea {
-  static render ({ label, description }) {
-    return `
-      <details>
-        <summary>${label}</summary>
-        <textarea row="5" disabled>${description}</textarea>
-      </details>
-    `;  
-  }
-}
-
-class PerkEffect extends RPGEffect {
+class PerkEffect extends RPGTextArea {
   static render ({ 
-    effect,
+    name,
     label, 
     description = "NO DESCRIPTION" }) {
     
-    const effectHTML = RPGEffect.render({ label, description });
-
-    return `
-      <perk-effect name="${effect}">
-      ${effectHTML}
-      </perk-effect>
-    `;
+    return RPGTextArea.render("perk-effect", { name, label, description });
   }
 }
 customElements.define( "perk-effect", PerkEffect );
@@ -256,13 +242,10 @@ class CharacterPerk extends RPGElement {
     perk,
     label, 
     effects = [], 
-    min = 0,
-    max = 10,
-    step = 1,
-    value = 0
   }) {
 
-    const effectsDescriptions= '';
+    const perkRankHTML = RPGNumber.render("perk-rank", rank );
+    let effectsDescriptions= '';
 
     for (let i=0; i < effects.length; i++) {
       effectsDescriptions += PerkEffect.render( effects[i] ); 
@@ -271,7 +254,7 @@ class CharacterPerk extends RPGElement {
     return `
       <character-perk name="${perk}">
         <label>${label}</label>
-        <input perk-rank type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
+        ${perkRankHTML}
         <effect-descriptions>
           ${effectsDescriptions}
         </effect-descriptions>
@@ -296,13 +279,8 @@ class CharacterPerk extends RPGElement {
 customElements.define( "character-perk", CharacterPerk );
 
 class CharacterTrait extends RPGTextArea {
-  static render ({ trait, label, description="NO DESCRIPTION"}) {
-    return `
-      <rpg-trait name="${trait}">
-        <label>${label}</label>
-        <text-area trait-descripion row="5" disabled>${description}</text-area>
-      </rpg-trait>
-    `;
+  static render ({ name, label, description="NO DESCRIPTION"}) {
+    return RPGTextArea.render("character-trait", { name, label, description });
   }
 }
 customElements.define( "character-trait", CharacterTrait );
@@ -356,12 +334,7 @@ class CombatDefense extends RPGNumber {
     step = 1,
     value = 0
   }) {
-    return `
-      <combat-defense>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </combat-defense>
-    `;
+    return RPGNumber.render("combat-defense", { label, min, max, step, value });
   }
 }
 customElements.define( "combat-defense", CombatDefense );
@@ -374,12 +347,7 @@ class CombatInitiative extends RPGNumber {
     step = 1,
     value = 0
   }) {
-    return `
-      <combat-initiative>
-        <label>${label}</label>
-        <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-      </combat-initiative>
-    `;
+    return RPGNumber.render("combat-initiative", { label, min, max, step, value });
   }
 }
 
@@ -387,41 +355,41 @@ class DamageResistance extends RPGElement {
   static render ({
     damage,
     label,
-    min = 0,
-    max = 99,
-    step = 1,
-    value = 0,
-    immunityValue = "Immune",
-    buttonLabel = "Change Immunity"
+    resistance,
+    immunity
 
   }) {
+
+    const resistanceHTML = RPGNumber.render("damage-value", resistance);
+    const immunityHTML = RGPCheckbox.render("damage-immunity", immunity);
+
     return `
       <damage-resistance name="${damage}">
         <label>${label}</label>
-        <input resistance type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-        <input immunity type="text" value="${immunityValue}" hidden>
-        <button type="button"hidden>${buttonLabel}</button>
+        ${immunityHTML}
+        ${resistanceHTML}
       </damage-resistance>
     `;
   }
 
   get value () {
-    return this.querySelector('input:not([hidden])').value;
+    return this.resistanceElement.value;
+  }
+  set value ( n ) {
+    this.resistanceElement = n;
   }
 
-  set value ( n ) {
-      const textInput = this.querySelector('input[type="text"]');
-      const numberInput = this.querySelector('input[type="number"]');
+  get immuneElement () { return this.querySelector('damage-immunity'); }
+  get resistanceElement () { return this.querySelector('damage-value'); } 
+  get isImmune () { return this.immuneElement.checked; }
 
-      if( typeof n === 'string') {
-        textInput.value = n;
-        textInput.hidden = false;
-        numberInput.hidden = true;
-      } else {
-        numberInput.value = n;
-        numberInput.hidden = false;
-        textInput.hidden = true;
-      }
+  connectedCallback () {
+    this.toggleValue();
+    this.immuneElement.addEventListener("change", this.toggleValue.bind(this));
+  }
+
+  toggleValue () {
+    this.resistanceElement.hidden = this.isImmune; 
   }
 }
 
@@ -436,28 +404,36 @@ class DamageType extends RPGElement {
 }
 customElements.define( "damage-type", DamageType );
 
+class PartHP extends RPGNumber {
+  static render ({ 
+    label, 
+    min = 0, 
+    max = 99,
+    step = 1,
+    value = 0
+  }) {
+    return RPGNumber.render( "part-hp",{ label, min, max, step, value });
+  }
+}
+customElements.define( "part-hp",PartHP );
+
 class BodyPart extends RPGNumber {
   static render ({
     part,
-    label,
-    min = 0,
-    max = 99,
-    step = 1,
-    value = 0,
+    hp,
     resistances
   }) {
 
     let resistancesHTML = "";
     for (const resistance of resistances) {
-      resistancesHTML += DamageResistance(resistance);
+      resistancesHTML += DamageResistance.render(resistance);
     }
+
+    let partHpHTML = PartHP.render();
 
     return `
       <body-part name="${part}">
-        <body-part-hp>
-          <label>${label}</label>
-          <input type="number" min="${min}" max="${max}" step=${step} value="${value}" disabled>
-        </body-part-hp>
+        
         ${resistancesHTML}
       </body-part>
     `;
@@ -465,45 +441,27 @@ class BodyPart extends RPGNumber {
 }
 customElements.define( "body-part", BodyPart );
 
-class WeaponEffect extends RPGEffect {
+class WeaponEffect extends RPGTextArea {
   static render ({ 
-    effect,
+    name,
     label, 
     description = "NO DESCRIPTION" }) {
     
     const effectHTML = RPGEffect.render({ label, description });
 
-    return `
-      <weapon-effect name="${effect}">
-      ${effectHTML}
-      </weapon-effect>
-    `;
+    return RPGTextArea.render("weapon-effect", { name, label, description }); 
   }
 }
 customElements.define( "weapon-effect", WeaponEffect );
 
-class RPGQuality extends RPGTextArea {
-  static render ({ label, description = "NO QUALITY" }) {
-    return `
-      <details>
-        <summary>${label}</summary>
-        <textarea row="5" disabled>${description}</textarea>
-      </details>
-    `;
-  }
-}
-
-class WeaponQuality extends RPGQuality {
-  static render ({ quality, label, description = "NO QUALITY" }) {
+class WeaponQuality extends RPGTextArea {
+  static render ({ name, label, description = "NO QUALITY" }) {
     const qualityHTML = RPGQuality.render({ label, description });
 
-    return `
-      <weapon-quality name="${quality}">
-      ${qualityHTML}
-      </weapon-quality>
-    `;
+    return RPGTextAera.render( "weapon-quality",{ name, label, description } );
   } 
 }
+customElements.define( "weapon-quality", WeaponQuality );
 
 
 /**********************************************
@@ -595,6 +553,71 @@ class Screen extends HTMLElement {
   }
 }
 customElements.define("rpg-screen", Screen);
+
+/**********************************************
+ * BASE RPG ELEMENTS 
+ * *******************************************/
+class RPGTable extends RPGElement {
+  static render ( tagname, { name, headers = [], actions = [] } ) {
+
+    let headersHTML, actionsHTML;
+
+    if ( actions ) {
+      actionsHTML = '<table-actions></table-actions>';
+
+      for ( const action of actions ) {
+        if ( action.name === 'add' ) actionsHTML += `<button type="button" action="add" item="${action.item}"  table="${name}">${action.label}<button/>`;
+      }
+    }
+
+    if ( headers ) {
+      headersHTML = '<table-headers>';
+
+      for ( const header of headers) {
+        headerHTML += `<table-header>${header}</table-header>`;
+      }
+
+      headerHTML += '</table-headers>';
+
+    }
+
+    return `
+      <${tagname} name="${name}">
+        <table-actions></table-actions>
+        ${headersHHTML}
+        <table-content></table-content>
+      </${tagname}>
+    `;
+  } 
+
+  #getAddButton () { return this.querySelector('[action="add"]'); }
+  #getTaBleContent () { return this.querySelector('table-content'); } 
+
+  connectedCallback () {
+    const actionAddButton = this.#getAddButton();
+    
+    if ( actionAddButton !== null ) actionAddButton.addEventListener("click", () => {
+      const RPGClassName = actionAddButton.getAttribute('item');
+      const RPGClass = RPGHTML[RPGClassName];
+      this.#getTableContent().appendChild( new RPGClass() );
+    });
+  }
+
+  addItems ( items = [] ) {
+    const addButton = this.#getAddButton();
+    const RPGClassName = actionAddButton.getAttribute('item');
+    const RPGClass = RPGHTML[RPGClassName];
+
+    let HTML = '';
+
+    for ( const item of items ) {
+      HTML += RPGClass.render(item);
+    }
+
+    this.#getTableContent().innerHTML = HTML;
+  }
+}
+
 
 /**********************************************
  * RENDER RPG FORM

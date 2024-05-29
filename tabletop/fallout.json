@@ -1,7 +1,10 @@
 {
   "tabletop": "Fallout",
   "version": "0.0.1",
-  "author": { "name":Kobra Rocks", "url":"https://kobra.rocks"},
+  "author": { 
+    "name":"Kobra Rocks", 
+    "url":"https://kobra.rocks"
+  },
   "url": "https://github.com/KobraRocks/fallout-tabletop-rpg",
   "screens": [
     { 
@@ -45,6 +48,12 @@
               "label": "XP to next level"
             }
           ]
+        },
+        {
+          "name":"perks",
+          "title":"Perks",
+          "table": "CharacterPerk"
+
         }
       ]
     }
