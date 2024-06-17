@@ -1,0 +1,75 @@
+<rpgmob tabletop="fallout" version="0.0.0" lang="US_en"></rpgmob>
+
+<character-information>
+  <character-name></character-name>
+  <character-origin></character-origin>
+  <character-biography></character-biography>
+  <character-level level="0" xp-earned="0" xp-to-next-level="0"></character-level>
+</character-information>
+
+<character-perks>
+</character-perks>
+
+<character-traits>
+</character-traits>
+
+<character-specials>
+  <character-special id="strength" rank="0"></character-special>
+  <character-special id="perception" rank="0"></character-special>
+  <character-special id="endurance" rank="0"></character-special>
+  <character-special id="charisma" rank="0"></character-special>
+  <character-special id="intelligence" rank="0"></character-special>
+  <character-special id="agility" rank="0"></character-special>
+  <character-special id="luck" rank="0"></character-special>
+
+  <luck-points rank="0"></luck-points>
+</character-specials>
+
+<character-skills>
+  <character-skill id="athletics" special="strenght" rank="0"></character-skills>
+  <character-skill id="barter" special="charisma" rank="0"></character-skill>
+  <character-skill id="bigGuns" special="endurance" rank="0"></character-skill>
+  <character-skill id="energyWeapons" special="perception" rank="0"></character-skill>
+  <character-skill id="explosives" special="perception" rank="0"></character-skill>
+  <character-skill id="lockpick" special="perception" rank="0"></character-skill>
+  <character-skill id="medicine" special="intelligence" rank="0"></character-skill>
+  <character-skill id="meleeWeapons" special="strength" rank="0"></character-skill>
+  <character-skill id="pilot" special="perception" rank="0"></character-skill>
+  <character-skill id="repair" special="intelligence" rank="0"></character-skill>
+  <character-skill id="science" special="intelligence" rank="0"></character-skill>
+  <character-skill id="smallGuns" special="agility" rank="0"></character-skill>
+  <character-skill id="sneak" special="agility" rank="0"></character-skill>
+  <character-skill id="speech" special="charisma" rank="0"></character-skill>
+  <character-skill id="survival" special="endurance" rank="0"></character-skill>
+  <character-skill id="throwing" special="agility" rank="0"></character-skill>
+  <character-skill id="unarmed" special="strength" rank="0"></character-skill>
+</character-skills>
+
+<character-combat>
+  <melee-damage dice="1"></melee-damage>
+  <combat-defense rank="0"></combat-defense>
+  <combat-initiative rank="0"></combat-initiative>
+</character-combat>
+
+<character-health max="0" current="0"></character-health>
+
+<character-resistances>
+  <natural-resistances>
+  </natural-resistances>
+  <character-parts>
+  </character-parts>
+</character-resistances>
+
+<character-inventory max-carry-weight="0" current-carry-weight="0">
+  <apparels></apparels>
+  <armors></armors>
+  <weapons></weapons>
+  <weapons-mods></weapons-mods>
+  <ammo></ammo>
+  <robot-parts></robot-parts>
+  <robot-mods></robot-mods>
+  <tools></tools>
+  <medicines></medicine>
+  <food></food>
+  <junk></junk>
+</character-inventory>

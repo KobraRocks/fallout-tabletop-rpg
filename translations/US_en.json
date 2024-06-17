@@ -1,0 +1,26 @@
+{
+  "CharacterName.label": "Name",
+  "CharacterOrigin.label":"Origin",
+  "CharacterBiography.label": "Biography",
+  "CharacterLevel.level": "Level",
+  "CharacterLevel.xpEarned": "XP earned",
+  "CharacterLevel.xpToNextLevel": "XP to next level",
+
+  "ammo": "Ammo",
+  "damage": "Damage",
+  "effects": "Effects",
+  "effect": "Effect",
+  "perks": "Perks",
+  "perk": "Perk",
+  "qualities": "Qualities",
+  "quality": "Quality",
+  "rank": "Rank",
+  "rate": "Rate",
+  "skills": "Skills",
+  "skill": "Skill",
+  "tag": "Tag",
+  "traits": "Traits",
+  "trait": "Trait",
+  "type": "Type",
+  "weight": "Weight"
+}

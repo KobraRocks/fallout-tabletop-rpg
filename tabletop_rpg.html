@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
+    <!--
     <h1 id="game-title">Fallout Tabletop RPG <span>Alpha 0.0.0 | <a href="https://kobra.rocks">by Kobra Rocks</a><span></h1>
 
 
@@ -17,12 +17,12 @@
         <nav-main><img src="icons/menu_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-main>
         <nav-settings><img src="icons/settings_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-settings>
         <nav-direction id="right"><img src="icons/chevron_right_24dp_FILL0_wght400_GRAD0_opsz24.svg"></nav-direction>
-      </nav-menu>
+    </nav-menu>
 
       <nav-lists>
         <nav-list id="file">
           <nav-item id="upload"><input type="file" accept=".json" ></nav-item>
-          <nav-item id="download">Save</nav-item>
+    <nav-item id="download">Save</nav-item>
         </nav-list>
 
         <nav-list id="character-sheet">
@@ -35,96 +35,44 @@
       </nav-lists>
 
     </nav>
-
-    <rpg-form>
-    </rpg-form>
-
-    <!--
-
-    <player-profil>
-
-      <player-name>
-        <label for="name">character Name</label>
-        <input name="name" type="text" value="My Name" disabled />
-      </player-name>
-
-      <player-xp>
-
-        <player-level>
-          <label for="level">Level</label>
-          <input name="level" type="number" min="0" step="1" value="0" disabled />
-        </player-level>
-
-        <xp-earned>
-          <label for="xpEarned">XP Earned</label>
-          <input name="xpEarned" type="number" min="0" value="0" disabled />
-        </xp-earned>
-
-        <xp-to-next-level>
-          <label for="xpToNextLevel">XP to next level</label>
-          <input name="xpToNextLevel" type="number" min="0" value="0" disabled />
-        </xp-to-next-level>
-
-        <player-origin>
-          <label for="origin">Origin</label>
-          <input name="origin" type="text" disabled />
-        </player-origin>
-
-      </player-xp>
-
-      <player-special>
-        <special-attribute>
-          <label for="strength">strength</label>
-          <input name="strength" type="number" min="0" step="1" value="0" disabled />
-        </special-attribute>
-        <special-attribute>
-          <label for="perception">perception</label>
-          <input name="perception" type="number" min="0" step="1" value="0" disabled />
-        </special-attribute>
-        <special-attribute>
-          <label for="endurance">endurance</label>
-          <input name="endurance" type="number" min="0" step="1" value="0" disabled />
-        </special-attribute>
-        <special-attribute>
-          <label for="charisma">charisma</label>
-          <input name="charisma" type="number" min="0" step="1" value="0" disabled />
-        </special-attribute>
-        <special-attribute>
-          <label for="intelligence">intelligence</label>
-          <input name="intelligence" type="number" min="0" step="1" value="0" disabled   />
-        </special-attribute>
-        <special-attribute>
-          <label for="agility">agility</label>
-          <input name="agility" type="number" min="0" step="1" value="0" disabled />
-        </special-attribute>
-        <special-attribute>
-          <label for="luck">luck</label>
-          <input name="luck" type="number" min="0" step="1" value="0" disabled />
-        </special-attribute>
-
-      </player-special>
-
-      <luck-points>
-        <label for="luckPoints">Luck Points</label>
-        <input name="luckPoints" type="number" min="0" max="0" step="1" value="0"disabled />
-      </luck-points>
-
-    </player-profil>
-
-    <player-skills style="display:none;">
-      <h2>Skills</h2>
-      <skill-table>
-      </skill-table>
-    </player-skills>
-
-    <player-combat style="display:none;">
-      Combat
-    </player-combat>
-
-    <player-weapons style="display:none;">
-      Weapons
-    </player-weapons>
 -->
-    <script type="module" src="app/main.js"></script>
+    <rpg-mob version="0.0.0">
+
+      <start-screen screen active>
+        <h1>Welcome to RGP<i>MOB</i></h1>
+        <button action="new">New Game</button>
+        <button action="continue">Continue Game</button>
+        <button action="credit">Credit</button>
+      </start-screen>
+
+      <new-game screen>
+        <select-tabletop source="/tabletop-list"></select-tabletop>
+        <button action="download" disabled>Load Tabletop</button>
+        <button action="config" disabled>Prepare Tabletop</button>
+        <button action="start" disabled>Start Game</button>
+        <button action="back">Back to start screen</button>
+      </new-game>
+        
+      <continue-game screen>
+        <button action="upload">Load Game Save</button>
+        <button action="back">Back to start screen</button>
+      </continue-game>
+
+      <start-session screen>
+        <button action="share">Share Game Session</button>
+        <button action="back">Back to start screen</button>
+      </start-session>
+
+      <rpgmob-credit screen>
+        <a href="https://kobra.rocks">by Kobra Rocks</a>
+        <button action="back">Back to start screen</button>
+      </rpgmob-credit>
+
+    </rpg-mob>
+
+    <rpg-tabletop></rpg-tabletop>
+
+    <script type="module" src="rpgmob/main.js"></script>
+
   </body>
 </html>

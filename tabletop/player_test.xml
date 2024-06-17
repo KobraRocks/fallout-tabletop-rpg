@@ -1,0 +1,151 @@
+<rpgmob tabletop="fallout" version="0.0.0" lang="US_en"></rpgmob>
+
+<character-information>
+  <character-name>Marvin</character-name>
+  <character-origin>Mister Handy</character-origin>
+  <character-biography>A biography...</character-biography>
+  <character-level level="1" xp-earned="502" xp-to-next-level="356"></character-level>
+</character-information>
+
+<character-perks>
+  <character-perk key="slayer" perk="Slayer" rank="1">When you inflict any damage with an unarmed attack or melee weapon, you may spend 1 luck point to immediately inflict a critical hit - and therefore an injury - on the location hit</character-perk>
+  <weapon-perk from="pincer" action="carry" max-weight="40" allow>You can pick up objects weighing no more than 40 lbs</part-perk>
+  <weapon-perk from="pincer" action="unarmedAttack" allow>You can make unarmed attacks</part-perk>
+</character-perks>
+
+<character-traits>
+  <character-trait from="misterHandyRobot" type="vision" angle="360"></character-trait>
+  <character-trait from="misterHandyRobot" type="test" special="perception" target="sight" difficulty="-1"></character-trait>  
+  <character-trait from="misterHandyRobot" type="test" special="perception" target="smell" difficulty="-1"></character-trait>
+  <character-trait from="misterHandyRobot" type="immunity" damage="radiation"></character-trait>
+  <character-trait from="misterHandyRobot" type="immunity" damage="poison"></character-traits>
+  <character-trait from="misterHandyRobot" action="selfUse" type="chems" effect="none"></character-trait> 
+  <character-trait from="misterHandyRobot" action="selfUse" type="food" effect="none"></character-trait>
+  <character-trait from="misterHandyRobot" action="selfUse" type="drink" effect="none"></character-trait>
+  <character-trait from="misterHandyRobot" action="selfUse" type="rest" effect="none"></character-trait>
+  <character-trait from="misterHandyRobot" action="selfUse" type="jetPropulsion" effect="hover"></character-trait>
+  <character-trait from="misterHandyRobot" action="carry" max-weight="150" allow>
+    <trait-modifier type="armor" allow></trait-modifier>
+    <trait-modifier type="special" special="strength" disallow></trait-modifier>
+    <trait-modifier type="perk" disallow></trait-modifier>
+  </character-trait>
+  <character-trait from="misterHandyRobot" action="selfRecovery" effect="none"></character-trait>
+  <character-trait from="misterHandyRobot" action="selfHeal" effect="none"></character-trait>
+  <character-trait from="misterHandyRobot" action="selfRepair" effect="repair"></character-trait>
+  <character-trait from="misterHandyRobot" action="repairBy" effect="repair"></character-trait>
+  <character-trait from="misterHandyRobot">you cannot manipulate the physical world like humans do, instead you have three arm attachments, as described.</character-trait>
+  <character-trait from="biography" action="witnessKill" victims="robot" effect="snapEvil"></character-trait>
+  <character-trait from="biography" action="tension" threshold="12" effect="snapEvil"></character-trait>
+</character-traits>
+
+<character-specials>
+  <character-special id="strength" rank="8"></character-special>
+  <character-special id="perception" rank="6"></character-special>
+  <character-special id="endurance" rank="4"></character-special>
+  <character-special id="charisma" rank="7"></character-special>
+  <character-special id="intelligence" rank="6"></character-special>
+  <character-special id="agility" rank="5"></character-special>
+  <character-special id="luck" rank="4"></character-special>
+</character-specials>
+
+<luck-points rank="4"></luck-points>
+
+<character-skills>
+  <character-skill id="athletics" special="strenght" rank="2"></character-skills>
+  <character-skill id="barter" special="charisma" rank="1"></character-skill>
+  <character-skill id="bigGuns" special="endurance" rank="2" tag></character-skill>
+  <character-skill id="energyWeapons" special="perception" rank="0"></character-skill>
+  <character-skill id="explosives" special="perception" rank="0"></character-skill>
+  <character-skill id="lockpick" special="perception" rank="1"></character-skill>
+  <character-skill id="medicine" special="intelligence" rank="1"></character-skill>
+  <character-skill id="meleeWeapons" special="strength" rank="3" tag></character-skill>
+  <character-skill id="pilot" special="perception" rank="0"></character-skill>
+  <character-skill id="repair" special="intelligence" rank="3"></character-skill>
+  <character-skill id="science" special="intelligence" rank="2"></character-skill>
+  <character-skill id="smallGuns" special="agility" rank="0"></character-skill>
+  <character-skill id="sneak" special="agility" rank="1"></character-skill>
+  <character-skill id="speech" special="charisma" rank="3" tag></character-skill>
+  <character-skill id="survival" special="endurance" rank="2"></character-skill>
+  <character-skill id="throwing" special="agility" rank="0"></character-skill>
+  <character-skill id="unarmed" special="strength" rank="1"></character-skill>
+</character-skills>
+
+<character-combat>
+  <melee-damage dice="1"></melee-damage>
+  <combat-defense rank="1"></combat-defense>
+  <combat-initiative rank="11"></combat-initiative>
+</character-combat>
+
+<character-health max="8" current="6"></character-health>
+
+<character-resistances>
+  <natural-resistances>
+    <natural-resistance type="poison" immune></natural-resistance>
+    <natural-resistance type="radiation" immune></natural-resistance>
+  </natural-resistances>
+  <character-parts>
+    <character-part id="optics" hp="0">
+      <damage-resistance type="physic" rank="2"></damage-resistance>
+      <damage-resistance type="energy" rank="0"></damage-resistance>
+    </character-part>
+    <character-part id="arm1" hp="0">
+      <damage-resistance type="physic" rank="2"></damage-resistance>
+      <damage-resistance type="energy" rank="0"></damage-resistance>
+    </character-part>
+    <character-part id="arm2" hp="0">
+      <damage-resistance type="physic" rank="2"></damage-resistance>
+      <damage-resistance type="energy" rank="0"></damage-resistance>
+    </character-part>
+    <character-part id="arm3" hp="0">
+      <damage-resistance type="physic" rank="2"></damage-resistance>
+      <damage-resistance type="energy" rank="0"></damage-resistance>
+    </character-part>
+    <character-part id="mainBody" hp="0">
+      <damage-resistance type="physic" rank="2"></damage-resistance>
+      <damage-resistance type="energy" rank="0"></damage-resistance>
+    </character-part>
+    <character-part id="thruster" hp="0">
+      <damage-resistance type="physic" rank="2"></damage-resistance>
+      <damage-resistance type="energy" rank="0"></damage-resistance>
+    </character-part>
+  </character-parts>
+</character-resistances>
+
+<character-inventory max-carry-weight="140" current-carry-weight="3">
+  <weapons>
+    <weapon-item type="pincer" skill="unarmed" target-number="9" quantity="1" damage-dice="3" damage-type="physic" equiped="arm1"></weapon-item>
+    <weapon-item type="buzzSaw" skill="meleeWeapons" target-number="11" quantity="1" damage-dice="4" damage-type="physic" equiped="arm2" tag>
+      <weapon-effect type="piercing" rank="1"></weapon-effect>
+    </weapon-item>
+    <weapon-item type="flamer" skill="bigGuns" target-number="6" quantity="1" damage-dice="3" damage-type="energy" rate="4" range="C" ammo="flamerFuel" equiped="arm3" tag>
+      <effects>
+        <weapon-effect type="burst"></weapon-effect>
+        <weapon-effect type="spread"></weapon-effect>
+        <weapon-effect type="persistent"></weapon-effect>
+      </effects>
+      <qualities>
+        <weapon-quality type="debilitating"></weapon-quality>
+        <weapon-quality type="inaccurate"></weapon-quality>
+      </qualities>
+    </weapon-item>
+    <weapon-item type="baseballBat" skill="meleeWeapons" target-number="6" quantity="1" damage-dice="5" damage-type="physic" weight="3" tag>
+      <qualities>
+        <weapon-quality type="twoHanded"></weapon-quality>
+      </qualities>
+    </weapon-item>
+  </weapons>
+  <ammo>
+    <ammo-item type="flamerFuel" quantity="6"></ammo-item>
+  </ammo>
+  <robot-parts>
+    <robot-part type="arm" weapon="pincer" equiped="arm1"></robot-part>
+    <robot-part type="arm" weapon="flamer" equiped="arm2"></robot-part>
+    <robot-part type="arm" weapon="buzzSaw" equiped="arm3"></robot-part>
+  </robot-parts>
+  <robot-mods>
+    <robot-mod id="integralBoiler" equiped="arm1">Once per scene, you can turn 2 dirty water into 1 purified water in 10 minutes</robot-mod>
+  </robot-mods>
+  <tools>
+    <tool-item type="repairKit" target="robot" quantity="1"></tool-item>
+  </tools>
+</character-inventory>
